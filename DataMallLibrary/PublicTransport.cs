@@ -10,7 +10,7 @@ namespace DataMallLibrary
 {
     public class PublicTransport : IPublicTransport
     {
-        private Client _client;
+        private readonly Client _client;
 
         public PublicTransport(Client client)
         {

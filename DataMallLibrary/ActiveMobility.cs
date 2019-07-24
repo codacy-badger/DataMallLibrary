@@ -10,7 +10,7 @@ namespace DataMallLibrary
 {
     public class ActiveMobility : IActiveMobility
     {
-        private Client _client;
+        private readonly Client _client;
 
         public ActiveMobility(Client client)
         {
