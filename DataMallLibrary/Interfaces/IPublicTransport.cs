@@ -1,20 +1,21 @@
-﻿using System;
+﻿using DataMallLibrary.Model.PublicTransport;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DataMallLibrary.Interfaces
 {
     interface IPublicTransport
     {
-        void GetArrivalDetails(int busCode);
-        void GetBusServices();
-        void GetBusRoutes();
-        void GetBusStops();
-        void GetPassengerVolumeByBusStops(DateTime date);
-        void GetPassengerVolumeByOriginBusStops(DateTime date);
-        void GetPassengerVolumeByOriginTrainStations(DateTime date);
-        void GetPassengerVolumeByTrainStations(DateTime date);
-        void GetAvailableTaxi();
-        void GetTrainServiceAlerts();
+        Task<BusArrival> GetArrivalDetails(int busStopCode, int ServiceNo = 0);
+        Task<BusServices> GetBusServices();
+        Task<BusRoutes> GetBusRoutes();
+        Task<BusStops> GetBusStops();
+        Task<BusStopPV> GetPassengerVolumeByBusStops(DateTime date);
+        Task<BusStopsODPV> GetPassengerVolumeByOriginBusStops(DateTime date);
+        Task<TrainODPV> GetPassengerVolumeByOriginTrainStations(DateTime date);
+        Task<TrainPV> GetPassengerVolumeByTrainStations(DateTime date);
+        Task<Taxi> GetAvailableTaxi();
     }
 }

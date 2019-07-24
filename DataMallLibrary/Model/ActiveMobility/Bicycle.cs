@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataMallLibrary.Model
+namespace DataMallLibrary.Model.ActiveMobility
 {
     public class Bicycle
     {
         public string odatametadata { get; set; }
-        public Value[] value { get; set; }
+        public BicycleDetails[] BicycleDetails { get; set; }
     }
 
-    public class Value
+    public class BicycleDetails
     {
         public string Description { get; set; }
         public float Latitude { get; set; }
