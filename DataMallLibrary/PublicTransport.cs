@@ -53,24 +53,52 @@ namespace DataMallLibrary
             return await _client.GetAsync<BusStops>(uri).ConfigureAwait(false);
         }
 
-        public async Task<BusStopPV> GetPassengerVolumeByBusStops(DateTime date)
+        public async Task<BusStopPV> GetPassengerVolumeByBusStops(DateTime ? date = null)
         {
-            throw new NotImplementedException();
+            var builder = new UriBuilder(APIConstant.PUBLICTRANSPORT_PV_BUSSTOPS);
+            var query = HttpUtility.ParseQueryString(builder.Query);
+            if (date != null)
+            {
+                query["Date"] = date.ToString();
+            }
+            builder.Query = query.ToString();
+            return await _client.GetAsync<BusStopPV>(builder.Uri).ConfigureAwait(false);
         }
 
-        public Task<BusStopsODPV> GetPassengerVolumeByOriginBusStops(DateTime date)
+        public async Task<BusStopsODPV> GetPassengerVolumeByOriginBusStops(DateTime ? date = null)
         {
-            throw new NotImplementedException();
+            var builder = new UriBuilder(APIConstant.PUBLICTRANSPORT_PV_ORGINDESTBUSSTOPS);
+            var query = HttpUtility.ParseQueryString(builder.Query);
+            if (date != null)
+            {
+                query["Date"] = date.ToString();
+            }
+            builder.Query = query.ToString();
+            return await _client.GetAsync<BusStopsODPV>(builder.Uri).ConfigureAwait(false);
         }
 
-        public Task<TrainODPV> GetPassengerVolumeByOriginTrainStations(DateTime date)
+        public async Task<TrainODPV> GetPassengerVolumeByOriginTrainStations(DateTime ? date = null)
         {
-            throw new NotImplementedException();
+            var builder = new UriBuilder(APIConstant.PUBLICTRANSPORT_PV_ORIGINTRAINSTATIONS);
+            var query = HttpUtility.ParseQueryString(builder.Query);
+            if (date != null)
+            {
+                query["Date"] = date.ToString();
+            }
+            builder.Query = query.ToString();
+            return await _client.GetAsync<TrainODPV>(builder.Uri).ConfigureAwait(false);
         }
 
-        public Task<TrainPV> GetPassengerVolumeByTrainStations(DateTime date)
+        public async Task<TrainPV> GetPassengerVolumeByTrainStations(DateTime ? date = null)
         {
-            throw new NotImplementedException();
+            var builder = new UriBuilder(APIConstant.PUBLICTRANSPORT_PV_TRAINSTATIONS);
+            var query = HttpUtility.ParseQueryString(builder.Query);
+            if (date != null)
+            {
+                query["Date"] = date.ToString();
+            }
+            builder.Query = query.ToString();
+            return await _client.GetAsync<TrainPV>(builder.Uri).ConfigureAwait(false);
         }
     }
 }

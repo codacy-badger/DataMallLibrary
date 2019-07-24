@@ -28,6 +28,7 @@ namespace DataMallLibrary
             return default;
         }
 
+
         public async Task<string> GetJsonAsync(Uri url)
         {
             if (url == null) throw new ArgumentNullException(nameof(url));

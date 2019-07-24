@@ -12,10 +12,10 @@ namespace DataMallLibrary.Interfaces
         Task<BusServices> GetBusServices();
         Task<BusRoutes> GetBusRoutes();
         Task<BusStops> GetBusStops();
-        Task<BusStopPV> GetPassengerVolumeByBusStops(DateTime date);
-        Task<BusStopsODPV> GetPassengerVolumeByOriginBusStops(DateTime date);
-        Task<TrainODPV> GetPassengerVolumeByOriginTrainStations(DateTime date);
-        Task<TrainPV> GetPassengerVolumeByTrainStations(DateTime date);
+        Task<BusStopPV> GetPassengerVolumeByBusStops(DateTime? date = null);
+        Task<BusStopsODPV> GetPassengerVolumeByOriginBusStops(DateTime? date = null);
+        Task<TrainODPV> GetPassengerVolumeByOriginTrainStations(DateTime? date = null);
+        Task<TrainPV> GetPassengerVolumeByTrainStations(DateTime? date = null);
         Task<Taxi> GetAvailableTaxi();
     }
 }
