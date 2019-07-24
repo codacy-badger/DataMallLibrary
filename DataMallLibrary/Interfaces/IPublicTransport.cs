@@ -8,7 +8,7 @@ namespace DataMallLibrary.Interfaces
 {
     interface IPublicTransport
     {
-        Task<BusArrival> GetArrivalDetails(int busStopCode, int ServiceNo = 0);
+        Task<BusArrival> GetArrivalDetails(int busStopCode, int? ServiceNo = null);
         Task<BusServices> GetBusServices();
         Task<BusRoutes> GetBusRoutes();
         Task<BusStops> GetBusStops();

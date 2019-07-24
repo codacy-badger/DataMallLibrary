@@ -10,14 +10,14 @@ namespace DataMallLibrary
 {
     public class ActiveMobility : IActiveMobility
     {
-        private readonly Client _client;
+        private Client _client;
 
         public ActiveMobility(Client client)
         {
-            _client = client ?? throw new Exception("Client is not instantiated");
+            _client = client ?? throw new ArgumentNullException("Client is not instantiated");
         }
 
-        async Task<Bicycle> IActiveMobility.GetBicycleParking(double latitude, double longitude, double radius)
+        public async Task<Bicycle> GetBicycleParking(double latitude, double longitude, double radius = 0.5)
         {
             var builder = new UriBuilder(APIConstant.ACTIVEMOBILITY_BICYCLEPARKING);
             var query = HttpUtility.ParseQueryString(builder.Query);

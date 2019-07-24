@@ -10,18 +10,19 @@ namespace DataMallLibrary
 {
     public class PublicTransport : IPublicTransport
     {
-        private readonly Client _client;
+        private Client _client;
+
         public PublicTransport(Client client)
         {
-            _client = client ?? throw new Exception("Client is not instantiated");
+            _client = client ?? throw new ArgumentNullException("Client is not instantiated");
         }
 
-        public async Task<BusArrival> GetArrivalDetails(int busStopCode, int ServiceNo = 0)
+        public async Task<BusArrival> GetArrivalDetails(int busStopCode, int ? ServiceNo = null)
         {
             var builder = new UriBuilder(APIConstant.PUBLICTRANSPORT_BUSARRIVAL);
             var query = HttpUtility.ParseQueryString(builder.Query);
             query["BusStopCode"] = busStopCode.ToString();
-            if (ServiceNo != 0)
+            if (ServiceNo != null)
             {
                 query["ServiceNo"] = ServiceNo.ToString();
             }

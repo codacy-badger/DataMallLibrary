@@ -31,7 +31,10 @@ namespace DataMallLibrary
 
         public async Task<string> GetJsonAsync(Uri url)
         {
-            if (url == null) throw new ArgumentNullException(nameof(url));
+            if (url == null)
+            {
+                throw new ArgumentNullException(nameof(url));
+            }
 
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Add("AccountKey", this.APIKey);
